@@ -37,8 +37,7 @@ gidNumber = 2000
 # Importacion de personas
 
 for p in todos["personas"]:
- 
-	dnusers = ('uid=%s,ou=People,dc=dgarcia,dc=gonzalonazareno,dc=org' % str(p["usuario"])
+	dnusers = 'uid=%s,ou=People,dc=dgarcia,dc=gonzalonazareno,dc=org' % str(p["usuario"])
 	dic = {}
 	dic['objectclass'] = ['top','posixAccount','inetOrgPerson','ldapPublicKey']
 	dic['cn'] = str(p["nombre"])
@@ -50,12 +49,9 @@ for p in todos["personas"]:
 	dic['mail'] = str(p["correo"])
 	dic['sshPublicKey'] = str(p["clave"])
 	dic['loginShell'] = '/bin/bash'
- 
 	ldif = modlist.addModlist(dic)
- 
 	l.add_s(dnusers,ldif)
-
-	uidNumber = uidNumber + 1)
+	uidNumber = uidNumber + 1
  
 print "Usuarios añadidos correctamente"
 
@@ -63,16 +59,13 @@ print "Usuarios añadidos correctamente"
 # Importacion de maquinas
 
 for c in todos["computers"]:
- 
-	dnusers2 = ('uid=%s,ou=Computers,dc=dgarcia,dc=gonzalonazareno,dc=org'%i["hostname"].encode('ascii','ignore'))
+	dnusers2 = 'uid=%s,ou=Computers,dc=dgarcia,dc=gonzalonazareno,dc=org' % str(c["hostname"])
 	dic2 = {}
-	dic2['objectclass'] = ['top','organizationalUnit','ldapPublicKey']
-	dic1['cn'] = str(c["hostname"])
-	dic1['ipHostNumber'] = str(c["ipv4"])
-	dic1['sshPublicKey'] = str(c["clave"])
- 
+	dic2['objectclass'] = ['top','device','ldapPublicKey','ipHost']
+	dic2['cn'] = str(c["hostname"])
+	dic2['ipHostNumber'] = str(c["ipv4"])
+	dic2['sshPublicKey'] = str(c["clave"])
 	ldif2 = modlist.addModlist(dic2)
- 
 	l.add_s(dnusers2,ldif2)
  
 print "Maquinas añadidas correctamente"
