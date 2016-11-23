@@ -81,4 +81,4 @@ print "Maquinas añadidas correctamente"
 l.unbind()
 
 # Cerramos el fichero json
-fichero_json.close()
+f.close()
