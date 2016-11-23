@@ -15,7 +15,7 @@ print""
  
 servidor= 'ldap://localhost:389/'
 l = ldap.initialize(servidor)
-user = 'cn=admin,dc=dgarcia,dc=gonzalonazareno,dc=org'
+user = 'cn=admin,dc=barney,dc=dgarcia,dc=gonzalonazareno,dc=org'
 pw = getpass.getpass('Introduzca password:')
 try:
 	l.simple_bind_s(user,pw)
@@ -38,7 +38,7 @@ gidNumber = 2000
 # Importacion de personas
 
 for p in todos["personas"]:
-	dnusers = 'uid=%s,ou=People,dc=dgarcia,dc=gonzalonazareno,dc=org' % str(p["usuario"])
+	dnusers = 'uid=%s,ou=People,dc=barney,dc=dgarcia,dc=gonzalonazareno,dc=org' % str(p["usuario"])
 	dic = {}
 	dic['objectclass'] = ['top','posixAccount','inetOrgPerson','ldapPublicKey']
 	dic['cn'] = str(p["nombre"])
@@ -63,7 +63,7 @@ print "Usuarios añadidos correctamente"
 # Importacion de maquinas
 
 for c in todos["computers"]:
-	dnusers2 = 'uid=%s,ou=Computers,dc=dgarcia,dc=gonzalonazareno,dc=org' % str(c["hostname"])
+	dnusers2 = 'uid=%s,ou=Computers,dc=barney,dc=dgarcia,dc=gonzalonazareno,dc=org' % str(c["hostname"])
 	dic2 = {}
 	dic2['objectclass'] = ['top','device','ldapPublicKey','ipHost']
 	dic2['cn'] = str(c["hostname"])
