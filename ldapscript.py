@@ -20,9 +20,10 @@ pw = getpass.getpass('Introduzca password:')
 try:
 	l.simple_bind_s(user,pw)
 except ldap.INVALID_CREDENTIALS:
-    print "Usuario o contraseña incorrecta"
-    sys.exit(0)
- 
+    	print "Usuario o contraseña incorrecta"
+    	sys.exit(0)
+
+	
 # Carga de datos
  
 ruta=raw_input("Introduzca la ruta del fichero .json: ")
@@ -50,9 +51,12 @@ for p in todos["personas"]:
 	dic['sshPublicKey'] = str(p["clave"])
 	dic['loginShell'] = '/bin/bash'
 	ldif = modlist.addModlist(dic)
-	l.add_s(dnusers,ldif)
-	uidNumber = uidNumber + 1
- 
+	try:
+		l.add_s(dnusers,ldif)
+		uidNumber = uidNumber + 1
+	except:
+               	print "Imposible añadir el usuario %s, ya se encuentra incluida" % str(p["usuario"]) 
+
 print "Usuarios añadidos correctamente"
 
 
@@ -66,8 +70,11 @@ for c in todos["computers"]:
 	dic2['ipHostNumber'] = str(c["ipv4"])
 	dic2['sshPublicKey'] = str(c["clave"])
 	ldif2 = modlist.addModlist(dic2)
-	l.add_s(dnusers2,ldif2)
- 
+	try:
+		l.add_s(dnusers2,ldif2)
+        except:
+                print "Imposible añadir la maquina %s,ya se encuentra incluida" % str(c["hostname"])	 
+
 print "Maquinas añadidas correctamente"
 
 # Cerramos la conexión
