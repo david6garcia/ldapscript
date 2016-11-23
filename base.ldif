@@ -1,19 +1,19 @@
-dn:ou=People,dc=dgarcia,dc=gonzalonazareno,dc=org
+dn:ou=People,dc=barney,dc=dgarcia,dc=gonzalonazareno,dc=org
 ou: People
 objectClass: top
 objectClass: organizationalUnit
 
-dn:ou=Group,dc=dgarcia,dc=gonzalonazareno,dc=org
+dn:ou=Group,dc=barney,dc=dgarcia,dc=gonzalonazareno,dc=org
 ou: Group
 objectClass: top
 objectClass: organizationalUnit
 
-dn:cn=ASIR2,ou=Group,dc=dgarcia,dc=gonzalonazareno,dc=org
+dn:cn=ASIR2,ou=Group,dc=barney,dc=dgarcia,dc=gonzalonazareno,dc=org
 objectClass: posixGroup
 objectClass: top
 cn: ASIR2
 gidNumber: 2000
 
-dn:ou=Computers,dc=dgarcia,dc=gonzalonazareno,dc=org
+dn:ou=Computers,dc=barney,dc=dgarcia,dc=gonzalonazareno,dc=org
 objectClass: top
 objectClass: organizationalUnit
